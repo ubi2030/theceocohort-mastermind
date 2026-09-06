@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The CEO Cohort | Apply</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--gold:#C5A55A;--gold-dark:#A8893E;--bg:#FFFFFF;--section-bg:#F2F2F0;--border:#DDD9D3;--text-primary:#0A0A0A;--text-muted:#666666}
+*{margin:0;padding:0;box-sizing:border-box}
+body{margin:0;padding:0;width:100%;font-family:'Source Sans 3',-apple-system,sans-serif;background:var(--bg);color:var(--text-primary);-webkit-font-smoothing:antialiased}
+
+/* TOP LOGO BAR */
+.top-bar{display:flex;justify-content:center;align-items:center;padding:28px 24px;background:var(--bg)}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-logo-icon{display:flex;align-items:center}
+.nav-logo-icon img{height:36px;width:auto}
+.nav-logo-text{font-family:'Source Sans 3',sans-serif;font-size:15px;font-weight:600;color:var(--text-primary)}
+
+/* TWO-COLUMN HERO SECTION */
+.hero-section{background:var(--section-bg);padding:64px 24px}
+.hero-grid{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.hero-photo{width:100%;height:640px;object-fit:cover;display:block;box-shadow:0 20px 50px rgba(0,0,0,.12)}
+.hero-right{display:flex;flex-direction:column}
+.hero-headline{font-family:'Playfair Display',serif;font-size:clamp(36px,4.2vw,58px);font-weight:400;line-height:1.15;color:var(--text-primary);letter-spacing:-0.5px}
+.hero-sub{font-family:'Source Sans 3',sans-serif;font-size:18px;font-weight:400;color:var(--text-muted);line-height:1.6;margin-top:22px;max-width:480px}
+
+/* FORM */
+.apply-form{margin-top:32px;max-width:480px}
+.form-group{margin-bottom:16px}
+.form-row{display:grid;gap:16px;margin-bottom:16px}
+.form-row.cols-2{grid-template-columns:1fr 1fr}
+.form-row.cols-3{grid-template-columns:1fr 1fr 1fr}
+.form-row .form-group{margin-bottom:0}
+@media(max-width:520px){.form-row.cols-2,.form-row.cols-3{grid-template-columns:1fr}}
+.form-group input,.form-group textarea{width:100%;font-family:'Source Sans 3',sans-serif;font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--text-primary);background:#fff;border:1px solid var(--border);border-radius:1px;padding:18px 18px;outline:none;transition:border-color .2s}
+.form-group input::placeholder,.form-group textarea::placeholder{color:#8A8580;font-weight:600;letter-spacing:.12em;text-transform:uppercase;font-size:13px}
+.form-group input:focus,.form-group textarea:focus{border-color:var(--gold)}
+.form-group textarea{resize:vertical;min-height:110px;font-family:'Source Sans 3',sans-serif;text-transform:none;letter-spacing:normal}
+.form-group textarea::placeholder{text-transform:uppercase;letter-spacing:.12em}
+.submit-btn{display:inline-block;margin-top:6px;padding:19px 56px;background:var(--gold-dark);color:#fff;font-family:'Source Sans 3',sans-serif;font-size:14px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;border:none;border-radius:1px;cursor:pointer;transition:background .2s}
+.submit-btn:hover{background:#8C6F2E}
+.apply-success{display:none;font-family:'Source Sans 3',sans-serif;font-size:17px;line-height:1.7;color:var(--text-primary);max-width:480px;margin-top:24px}
+
+@media(max-width:860px){
+  .hero-grid{grid-template-columns:1fr;gap:32px}
+  .hero-photo{height:420px}
+  .hero-right{text-align:left}
+}
+
+/* FOOTER (matches the live kickoff/apply pages, CEO Cohort branding) */
+footer{max-width:900px;margin:0 auto;padding:40px 24px 56px;border-top:1px solid var(--border);text-align:center}
+.footer-name{font-family:'Source Sans 3',sans-serif;font-size:13px;font-weight:600;color:var(--text-primary);margin-bottom:12px}
+.footer-links{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-bottom:16px}
+.footer-links a{font-family:'Source Sans 3',sans-serif;font-size:12px;color:var(--text-muted);text-decoration:none}
+.footer-links a:hover{color:var(--text-primary)}
+.footer-copy{font-family:'Source Sans 3',sans-serif;font-size:12px;color:var(--text-muted)}
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+<a href="https://theceocohort.com" class="nav-logo">
+<div class="nav-logo-icon"><img src="images/logo.png" alt="The CEO Cohort"></div>
+<span class="nav-logo-text">The CEO Cohort<sup>&trade;</sup></span>
+</a>
+</div>
+
+<section class="hero-section">
+  <div class="hero-grid">
+    <img class="hero-photo" src="images/headshot.jpeg" alt="Jonathan Herzog">
+    <div class="hero-right">
+      <h1 class="hero-headline">Apply for The Last Best Series A Mastermind.</h1>
+      <p class="hero-sub">Apply below and our team will follow up with the next steps.</p>
+
+      <form class="apply-form" id="mastermind-form">
+        <div class="form-row cols-2">
+          <div class="form-group">
+            <input type="text" id="fullName" name="fullName" placeholder="Full Name" required autocomplete="name">
+          </div>
+          <div class="form-group">
+            <input type="email" id="email" name="email" placeholder="Email" required autocomplete="email">
+          </div>
+        </div>
+        <div class="form-row cols-2">
+          <div class="form-group">
+            <input type="text" id="companyName" name="companyName" placeholder="Company Name" required>
+          </div>
+          <div class="form-group">
+            <input type="text" id="website" name="website" placeholder="Website" required>
+          </div>
+        </div>
+        <div class="form-row cols-2">
+          <div class="form-group">
+            <input type="text" id="targetRoundSize" name="targetRoundSize" placeholder="Target Round Size" required>
+          </div>
+          <div class="form-group">
+            <input type="text" id="arr" name="arr" placeholder="ARR" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <textarea id="whyApplying" name="whyApplying" placeholder="Why am I applying to The Series A Mastermind?" required></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Submit</button>
+      </form>
+      <div class="apply-success" id="apply-success">
+        <p>Thanks - your application has been received. We'll be in touch shortly with next steps.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+<div class="footer-name">Jonathan Herzog</div>
+<div class="footer-links">
+<a href="https://theceocohort.com/casestudy">Case Studies</a>
+<a href="https://podcasts.apple.com/us/podcast/the-ceo-cohort-kickoff/id1612031713?i=1000750717641">Podcast</a>
+<a href="https://x.com/JonathanHerzog5" target="_blank">Twitter</a>
+<a href="https://www.theceocohort.com/privacy" target="_blank">Privacy</a>
+<a href="https://www.theceocohort.com/terms" target="_blank">Terms</a>
+</div>
+<div class="footer-copy">© 2026 The CEO Cohort<sup>&trade;</sup> - ALL RIGHTS RESERVED</div>
+</footer>
+
+<script>
+document.getElementById('mastermind-form').addEventListener('submit', function(e){
+  e.preventDefault();
+  var form = e.target;
+  var submitBtn = form.querySelector('.submit-btn');
+  submitBtn.disabled = true;
+  fetch('https://formspree.io/f/mnpqbkne', {
+    method: 'POST',
+    headers: { 'Accept': 'application/json' },
+    body: new FormData(form)
+  }).then(function(response){
+    if (response.ok) {
+      form.style.display = 'none';
+      document.getElementById('apply-success').style.display = 'block';
+    } else {
+      submitBtn.disabled = false;
+      alert('Something went wrong submitting your application. Please try again.');
+    }
+  }).catch(function(){
+    submitBtn.disabled = false;
+    alert('Something went wrong submitting your application. Please try again.');
+  });
+});
+</script>
+
+</body>
+</html>
