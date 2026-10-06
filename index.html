@@ -41,6 +41,12 @@ body{margin:0;padding:0;width:100%;font-family:'Source Sans 3',-apple-system,san
 .form-group input:focus,.form-group textarea:focus{border-color:var(--gold)}
 .form-group textarea{resize:vertical;min-height:110px;font-family:'Source Sans 3',sans-serif;text-transform:none;letter-spacing:normal}
 .form-group textarea::placeholder{text-transform:uppercase;letter-spacing:.12em}
+.deck-upload{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;background:#fff;border:1px dashed var(--border);border-radius:1px;padding:18px 18px;cursor:pointer;transition:border-color .2s}
+.deck-upload:hover,.deck-upload.has-file{border-color:var(--gold)}
+.deck-upload input{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+.deck-label{font-family:'Source Sans 3',sans-serif;font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#8A8580;white-space:nowrap}
+.deck-upload.has-file .deck-label{color:var(--text-primary)}
+.deck-name{font-family:'Source Sans 3',sans-serif;font-size:13px;color:var(--text-muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
 .submit-btn{display:inline-block;margin-top:6px;padding:19px 56px;background:var(--gold-dark);color:#fff;font-family:'Source Sans 3',sans-serif;font-size:14px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;border:none;border-radius:1px;cursor:pointer;transition:background .2s}
 .submit-btn:hover{background:#8C6F2E}
 .apply-success{display:none;font-family:'Source Sans 3',sans-serif;font-size:17px;line-height:1.7;color:var(--text-primary);max-width:480px;margin-top:24px}
@@ -104,6 +110,14 @@ footer{max-width:900px;margin:0 auto;padding:40px 24px 56px;border-top:1px solid
         <div class="form-group">
           <textarea id="whyApplying" name="whyApplying" placeholder="Why am I applying to The Fortune 100 Mastermind?" required></textarea>
         </div>
+        <div class="form-group">
+          <label class="deck-upload" id="deck-upload">
+            <span class="deck-label">Attach a Deck</span>
+            <span class="deck-name" id="deck-name">PDF, up to 50MB</span>
+            <input type="file" id="deck" accept="application/pdf,.pdf">
+          </label>
+        </div>
+        <input type="hidden" name="deck" id="deck-link">
         <button type="submit" class="submit-btn">Submit</button>
       </form>
       <div class="apply-success" id="apply-success">
@@ -126,27 +140,67 @@ footer{max-width:900px;margin:0 auto;padding:40px 24px 56px;border-top:1px solid
 </footer>
 
 <script>
+var deckInput = document.getElementById('deck');
+var MAX_DECK_BYTES = 50 * 1024 * 1024;
+deckInput.addEventListener('change', function(){
+  var file = deckInput.files[0];
+  if (file && !(file.type === 'application/pdf' || /\.pdf$/i.test(file.name))) {
+    alert('Please attach your deck as a PDF.'); deckInput.value = ''; file = null;
+  } else if (file && file.size > MAX_DECK_BYTES) {
+    alert('Your deck must be 50MB or smaller.'); deckInput.value = ''; file = null;
+  }
+  document.getElementById('deck-name').textContent = file ? file.name : 'PDF, up to 50MB';
+  document.getElementById('deck-upload').classList.toggle('has-file', !!file);
+});
+
+// Uploads the PDF to private storage and resolves with a link to it (or '' when no deck is attached).
+function uploadDeck(){
+  var file = deckInput.files[0];
+  if (!file) return Promise.resolve('');
+  return fetch('/api/deck', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ name: file.name, size: file.size, type: file.type })
+  }).then(function(r){
+    return r.json().then(function(d){ if (!r.ok) throw new Error(d.error || 'upload'); return d; });
+  }).then(function(d){
+    return fetch(d.uploadUrl, { method: 'PUT', headers: { 'Content-Type': 'application/pdf' }, body: file })
+      .then(function(r){ if (!r.ok) throw new Error('upload'); return d.link; });
+  });
+}
+
 document.getElementById('mastermind-form').addEventListener('submit', function(e){
   e.preventDefault();
   var form = e.target;
   var submitBtn = form.querySelector('.submit-btn');
   submitBtn.disabled = true;
-  fetch('https://formspree.io/f/mnpqbkne', {
-    method: 'POST',
-    headers: { 'Accept': 'application/json' },
-    body: new FormData(form)
-  }).then(function(response){
-    if (response.ok) {
-      form.style.display = 'none';
-      document.getElementById('apply-success').style.display = 'block';
-    } else {
+  if (deckInput.files[0]) submitBtn.textContent = 'Uploading deck...';
+  uploadDeck().catch(function(err){
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Submit';
+    alert(err.message && err.message !== 'upload' ? err.message : 'Your deck could not be uploaded. Please try again.');
+    throw err;
+  }).then(function(link){
+    var deckLink = document.getElementById('deck-link');
+    deckLink.value = link; deckLink.disabled = !link;
+    submitBtn.textContent = 'Submit';
+    return fetch('https://formspree.io/f/mnpqbkne', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: new FormData(form)
+    }).then(function(response){
+      if (response.ok) {
+        form.style.display = 'none';
+        document.getElementById('apply-success').style.display = 'block';
+      } else {
+        submitBtn.disabled = false;
+        alert('Something went wrong submitting your application. Please try again.');
+      }
+    }).catch(function(){
       submitBtn.disabled = false;
       alert('Something went wrong submitting your application. Please try again.');
-    }
-  }).catch(function(){
-    submitBtn.disabled = false;
-    alert('Something went wrong submitting your application. Please try again.');
-  });
+    });
+  }).catch(function(){});
 });
 </script>
 
