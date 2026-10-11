@@ -41,11 +41,13 @@ body{margin:0;padding:0;width:100%;font-family:'Source Sans 3',-apple-system,san
 .form-group input:focus,.form-group textarea:focus{border-color:var(--gold)}
 .form-group textarea{resize:vertical;min-height:110px;font-family:'Source Sans 3',sans-serif;text-transform:none;letter-spacing:normal}
 .form-group textarea::placeholder{text-transform:uppercase;letter-spacing:.12em}
-.deck-upload{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;background:#fff;border:1px dashed var(--border);border-radius:1px;padding:18px 18px;cursor:pointer;transition:border-color .2s}
+.deck-upload{position:relative;display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;background:#fff;border:1px dashed var(--border);border-radius:1px;padding:18px 18px;cursor:pointer;transition:border-color .2s}
 .deck-upload:hover,.deck-upload.has-file{border-color:var(--gold)}
 .deck-upload input{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
 .deck-label{font-family:'Source Sans 3',sans-serif;font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#8A8580;white-space:nowrap}
 .deck-upload.has-file .deck-label{color:var(--text-primary)}
+.deck-upload.missing{border-color:#b3261e}
+.deck-upload.missing .deck-name{color:#b3261e}
 .deck-name{font-family:'Source Sans 3',sans-serif;font-size:13px;color:var(--text-muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
 .submit-btn{display:inline-block;margin-top:6px;padding:19px 56px;background:var(--gold-dark);color:#fff;font-family:'Source Sans 3',sans-serif;font-size:14px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;border:none;border-radius:1px;cursor:pointer;transition:background .2s}
 .submit-btn:hover{background:#8C6F2E}
@@ -114,7 +116,7 @@ footer{max-width:900px;margin:0 auto;padding:40px 24px 56px;border-top:1px solid
           <label class="deck-upload" id="deck-upload">
             <span class="deck-label">Attach a Deck</span>
             <span class="deck-name" id="deck-name">PDF, up to 50MB</span>
-            <input type="file" id="deck" accept="application/pdf,.pdf">
+            <input type="file" id="deck" accept="application/pdf,.pdf" required>
           </label>
         </div>
         <input type="hidden" name="deck" id="deck-link">
@@ -151,6 +153,13 @@ deckInput.addEventListener('change', function(){
   }
   document.getElementById('deck-name').textContent = file ? file.name : 'PDF, up to 50MB';
   document.getElementById('deck-upload').classList.toggle('has-file', !!file);
+  document.getElementById('deck-upload').classList.toggle('missing', !file);
+});
+
+// The file input itself is visually hidden, so the browser's own "required" bubble is easy to miss - flag the box too.
+deckInput.addEventListener('invalid', function(){
+  document.getElementById('deck-upload').classList.add('missing');
+  document.getElementById('deck-name').textContent = 'Please attach your deck (PDF)';
 });
 
 // Uploads the PDF to private storage and resolves with a link to it (or '' when no deck is attached).
