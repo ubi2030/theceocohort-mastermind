@@ -109,6 +109,9 @@ section{padding:72px 0}
 .deck-upload.has-file .deck-label{color:var(--ink)}
 .deck-upload.missing{border-color:#b3261e}
 .deck-upload.missing .deck-name{color:#b3261e}
+.essay-upload{flex-direction:column;align-items:flex-start;gap:8px}
+.essay-label{white-space:normal;line-height:1.45}
+.essay-label small{display:block;font-size:11px;letter-spacing:.1em;color:var(--crim);margin-top:4px}
 .deck-name{font-family:Lato,sans-serif;font-size:13px;color:var(--mute);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
 .submit-btn{display:inline-block;margin-top:6px;padding:19px 56px;background:var(--crim);color:#fff;font-family:Lato,sans-serif;font-size:13px;font-weight:900;letter-spacing:.16em;text-transform:uppercase;border:none;border-radius:1px;cursor:pointer;transition:background .2s}
 .submit-btn:hover{background:var(--crim2)}
@@ -286,9 +289,9 @@ footer{max-width:900px;margin:0 auto;padding:40px 24px 56px;text-align:center}
     <h3>The MBA Experience</h3>
     <ul>
      <li><b>Weekly Live MBA Sessions</b> — confidential live classes with the Dean and fellow CEOs.</li>
-     <li><b>Advanced Resource Vault</b> — masterclasses for every course in the curriculum.</li>
-     <li><b>24/7 Async Support</b> — ongoing access between sessions, all year.</li>
-     <li><b>Bonus VIP Deep-Dive</b> — private session plus access to a super-aggregator of every Tier 1 Fund, VC, Angel and Family Office.</li>
+     <li><b>Herzog Case Library</b> — original case studies, readings and frameworks for every course in the curriculum.</li>
+     <li><b>Dean’s Office Hours</b> — 1-on-1 advising with Jonathan Herzog across both semesters.</li>
+     <li><b>Capstone Investor Day</b> — present your final CEO plan to a room of Tier 1 Funds, Family Offices and Fortune 100 executives.</li>
      <li><b>Live In-Person Commencement</b> — a graduation weekend to celebrate your MBA Certification.</li>
      <li><b>Alumni Network</b> — one of the most powerful founder communities in the world.</li>
     </ul>
@@ -298,7 +301,7 @@ footer{max-width:900px;margin:0 auto;padding:40px 24px 56px;text-align:center}
     <h3>How to Apply</h3>
     <ul class="steps">
      <li><i>1</i><span><b>Apply online</b> using the application below.</span></li>
-     <li><i>2</i><span><b>Kickoff interview</b> with Jonathan Herzog — book at <a href="https://kickoff.theceocohort.com" style="color:inherit">kickoff.theceocohort.com</a>.</span></li>
+     <li><i>2</i><span><b>Invitation-Only Interview</b> with Jonathan Herzog.</span></li>
      <li><i>3</i><span><b>Admission decision</b> — a small class is hand-selected each intake.</span></li>
      <li><i>4</i><span><b>Enroll</b> and begin Semester 1 with your class.</span></li>
      <li><i>5</i><span><b>Graduate</b> with the Herzog Business School MBA Certification at month 12.</span></li>
@@ -308,7 +311,7 @@ footer{max-width:900px;margin:0 auto;padding:40px 24px 56px;text-align:center}
 
   <div class="tuition">
    <div class="amt"><small>Tuition · Full 12-Month Program</small>$50,000</div>
-   <div><p>Includes both semesters, all live sessions, the Resource Vault, VIP Deep-Dive and certification.</p>
+   <div><p>Includes both semesters, all live sessions, the Case Library, Dean’s Office Hours, Investor Day and certification.</p>
     <a href="#apply">Apply Now →</a></div>
   </div>
  </div>
@@ -341,14 +344,18 @@ footer{max-width:900px;margin:0 auto;padding:40px 24px 56px;text-align:center}
         </div>
         <div class="form-row cols-2">
           <div class="form-group">
-            <input type="text" id="targetRoundSize" name="targetRoundSize" placeholder="Target Round Size" required>
+            <input type="text" id="targetMarketCap" name="targetMarketCap" placeholder="Target Market Cap" required>
           </div>
           <div class="form-group">
             <input type="text" id="arr" name="arr" placeholder="ARR" required>
           </div>
         </div>
         <div class="form-group">
-          <textarea id="whyApplying" name="whyApplying" placeholder="Why am I applying to the Herzog Business School MBA?" required></textarea>
+          <label class="deck-upload essay-upload" id="essay-upload">
+            <span class="deck-label essay-label">Why am I applying to the Herzog Business School MBA?<small>500 word limit. Do Not Use AI.</small></span>
+            <span class="deck-name" id="essay-name">PDF, up to 50MB</span>
+            <input type="file" id="essay" accept="application/pdf,.pdf" required>
+          </label>
         </div>
         <div class="form-group">
           <label class="deck-upload" id="deck-upload">
@@ -358,6 +365,7 @@ footer{max-width:900px;margin:0 auto;padding:40px 24px 56px;text-align:center}
           </label>
         </div>
         <input type="hidden" name="deck" id="deck-link">
+        <input type="hidden" name="essay" id="essay-link">
         <button type="submit" class="submit-btn">Submit Application</button>
       </form>
       <div class="apply-success" id="apply-success">
@@ -382,29 +390,36 @@ footer{max-width:900px;margin:0 auto;padding:40px 24px 56px;text-align:center}
 </footer>
 
 <script>
+var MAX_FILE_BYTES = 50 * 1024 * 1024;
 var deckInput = document.getElementById('deck');
-var MAX_DECK_BYTES = 50 * 1024 * 1024;
-deckInput.addEventListener('change', function(){
-  var file = deckInput.files[0];
-  if (file && !(file.type === 'application/pdf' || /\.pdf$/i.test(file.name))) {
-    alert('Please attach your deck as a PDF.'); deckInput.value = ''; file = null;
-  } else if (file && file.size > MAX_DECK_BYTES) {
-    alert('Your deck must be 50MB or smaller.'); deckInput.value = ''; file = null;
-  }
-  document.getElementById('deck-name').textContent = file ? file.name : 'PDF, up to 50MB';
-  document.getElementById('deck-upload').classList.toggle('has-file', !!file);
-  document.getElementById('deck-upload').classList.toggle('missing', !file);
-});
+var essayInput = document.getElementById('essay');
 
-// The file input itself is visually hidden, so the browser's own "required" bubble is easy to miss - flag the box too.
-deckInput.addEventListener('invalid', function(){
-  document.getElementById('deck-upload').classList.add('missing');
-  document.getElementById('deck-name').textContent = 'Please attach your deck (PDF)';
-});
+// Wires a visually-hidden PDF input to its dashed box: validation, filename display and the red "missing" state.
+function setupUpload(input, boxId, nameId, missingText){
+  var box = document.getElementById(boxId), nameEl = document.getElementById(nameId);
+  input.addEventListener('change', function(){
+    var file = input.files[0];
+    if (file && !(file.type === 'application/pdf' || /\.pdf$/i.test(file.name))) {
+      alert('Please attach a PDF.'); input.value = ''; file = null;
+    } else if (file && file.size > MAX_FILE_BYTES) {
+      alert('Your file must be 50MB or smaller.'); input.value = ''; file = null;
+    }
+    nameEl.textContent = file ? file.name : 'PDF, up to 50MB';
+    box.classList.toggle('has-file', !!file);
+    box.classList.toggle('missing', !file);
+  });
+  // The file input itself is visually hidden, so the browser's own "required" bubble is easy to miss - flag the box too.
+  input.addEventListener('invalid', function(){
+    box.classList.add('missing');
+    nameEl.textContent = missingText;
+  });
+}
+setupUpload(deckInput, 'deck-upload', 'deck-name', 'Please attach your deck (PDF)');
+setupUpload(essayInput, 'essay-upload', 'essay-name', 'Please attach your essay (PDF)');
 
-// Uploads the PDF to private storage and resolves with a link to it (or '' when no deck is attached).
-function uploadDeck(){
-  var file = deckInput.files[0];
+// Uploads a PDF to private storage and resolves with a link to it (or '' when nothing is attached).
+function uploadFile(input){
+  var file = input.files[0];
   if (!file) return Promise.resolve('');
   return fetch('/api/deck', {
     method: 'POST',
@@ -423,16 +438,17 @@ document.getElementById('mastermind-form').addEventListener('submit', function(e
   var form = e.target;
   var submitBtn = form.querySelector('.submit-btn');
   submitBtn.disabled = true;
-  if (deckInput.files[0]) submitBtn.textContent = 'Uploading deck...';
-  uploadDeck().catch(function(err){
+  submitBtn.textContent = 'Uploading files...';
+  Promise.all([uploadFile(deckInput), uploadFile(essayInput)]).catch(function(err){
     submitBtn.disabled = false;
-    submitBtn.textContent = 'Submit';
-    alert(err.message && err.message !== 'upload' ? err.message : 'Your deck could not be uploaded. Please try again.');
+    submitBtn.textContent = 'Submit Application';
+    alert(err.message && err.message !== 'upload' ? err.message : 'Your files could not be uploaded. Please try again.');
     throw err;
-  }).then(function(link){
-    var deckLink = document.getElementById('deck-link');
-    deckLink.value = link; deckLink.disabled = !link;
-    submitBtn.textContent = 'Submit';
+  }).then(function(links){
+    [['deck-link', links[0]], ['essay-link', links[1]]].forEach(function(p){
+      var el = document.getElementById(p[0]); el.value = p[1]; el.disabled = !p[1];
+    });
+    submitBtn.textContent = 'Submit Application';
     return fetch('https://formspree.io/f/mnpqbkne', {
       method: 'POST',
       headers: { 'Accept': 'application/json' },
@@ -452,6 +468,7 @@ document.getElementById('mastermind-form').addEventListener('submit', function(e
   }).catch(function(){});
 });
 </script>
+
 
 </body>
 </html>
