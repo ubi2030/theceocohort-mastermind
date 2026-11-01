@@ -1,9 +1,10 @@
 {
-  "rewrites": [
+  "routes": [
     {
-      "source": "/",
+      "src": "^/$",
       "has": [{ "type": "host", "value": "mastermind.theceocohort.com" }],
-      "destination": "/mastermind.html"
-    }
+      "dest": "/mastermind.html"
+    },
+    { "handle": "filesystem" }
   ]
 }
