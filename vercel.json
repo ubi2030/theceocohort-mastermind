@@ -15,6 +15,16 @@
       "has": [
         {
           "type": "host",
+          "value": "casestudies.uscapitalpartnersfund.com"
+        }
+      ],
+      "dest": "/casestudy.html"
+    },
+    {
+      "src": "^/$",
+      "has": [
+        {
+          "type": "host",
           "value": "www.uscapitalpartnersfund.com"
         }
       ],
