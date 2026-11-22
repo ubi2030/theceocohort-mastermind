@@ -2,9 +2,36 @@
   "routes": [
     {
       "src": "^/$",
-      "has": [{ "type": "host", "value": "mastermind.theceocohort.com" }],
+      "has": [
+        {
+          "type": "host",
+          "value": "mastermind.theceocohort.com"
+        }
+      ],
       "dest": "/mastermind.html"
     },
-    { "handle": "filesystem" }
+    {
+      "src": "^/$",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.uscapitalpartnersfund.com"
+        }
+      ],
+      "dest": "/raising.html"
+    },
+    {
+      "src": "^/$",
+      "has": [
+        {
+          "type": "host",
+          "value": "uscapitalpartnersfund.com"
+        }
+      ],
+      "dest": "/raising.html"
+    },
+    {
+      "handle": "filesystem"
+    }
   ]
 }
