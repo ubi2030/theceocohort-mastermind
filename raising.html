@@ -4,111 +4,344 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Last Best Raising Cohort | Apply</title>
+<meta name="description" content="The Last Best Raising Cohort - the Frontier Raising Protocol to close Fortune 100 deals and never have to raise a round again.">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Sans+3:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--gold:#C5A55A;--gold-dark:#A8893E;--bg:#FFFFFF;--section-bg:#F2F2F0;--border:#DDD9D3;--text-primary:#0A0A0A;--text-muted:#666666}
+:root{--gold:#C5A55A;--gold-dark:#A8893E;--bg:#FFFFFF;--section-bg:#F7F6F3;--border:#E2DED6;--text-primary:#0A0A0A;--text-body:#2B2B2B;--text-muted:#666666;--ink:#16140f}
 *{margin:0;padding:0;box-sizing:border-box}
-body{margin:0;padding:0;width:100%;font-family:'Source Sans 3',-apple-system,sans-serif;background:var(--bg);color:var(--text-primary);-webkit-font-smoothing:antialiased}
+html{scroll-behavior:smooth}
+body{font-family:'Source Sans 3',-apple-system,sans-serif;background:var(--bg);color:var(--text-primary);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+.wrap{max-width:680px;margin:0 auto;padding:0 24px}
+.wide{max-width:1040px;margin:0 auto;padding:0 24px}
+.divider{max-width:760px;margin:0 auto;border:0;border-top:1px solid var(--border)}
+.label{font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-dark)}
+.btn{display:inline-block;padding:16px 44px;background:var(--gold);color:#fff;font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;border:none;border-radius:2px;cursor:pointer;transition:background .2s}
+.btn:hover{background:var(--gold-dark)}
 
-/* TOP LOGO BAR */
-.top-bar{display:flex;justify-content:center;align-items:center;padding:28px 24px;background:var(--bg)}
+/* NAV */
+nav{display:flex;align-items:center;justify-content:space-between;padding:16px 32px;border-bottom:1px solid var(--border);background:#fff;position:sticky;top:0;z-index:10}
+nav .side{display:flex;gap:26px;align-items:center;flex:1}
+nav .side.right{justify-content:flex-end}
+nav .side a{font-size:14px;text-decoration:none;color:var(--text-primary)}
+nav .side a.btn{color:#fff;padding:9px 20px;font-size:12px}
 .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
-.nav-logo-icon{display:flex;align-items:center}
-.nav-logo-icon img{height:36px;width:auto}
-.nav-logo-text{font-family:'Source Sans 3',sans-serif;font-size:15px;font-weight:600;color:var(--text-primary)}
+.nav-logo img{height:32px;width:auto}
+.nav-logo span{font-size:15px;font-weight:600}
+@media(max-width:720px){nav{padding:12px 16px}nav .side.left{display:none}nav .side.right a:not(.btn){display:none}nav .nav-logo{flex:1}}
 
-/* TWO-COLUMN HERO SECTION */
-.hero-section{background:var(--section-bg);padding:64px 24px}
-.hero-grid{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
-.hero-photo{width:100%;height:640px;object-fit:cover;display:block;box-shadow:0 20px 50px rgba(0,0,0,.12)}
-.hero-right{display:flex;flex-direction:column}
-.hero-headline{font-family:'Playfair Display',serif;font-size:clamp(36px,4.2vw,58px);font-weight:400;line-height:1.15;color:var(--text-primary);letter-spacing:-0.5px}
-.hero-sub{font-family:'Source Sans 3',sans-serif;font-size:18px;font-weight:400;color:var(--text-muted);line-height:1.6;margin-top:22px;max-width:480px}
+/* HERO */
+.hero{text-align:center;padding:72px 24px 56px}
+.hero .label{margin-bottom:22px}
+.hero h1{font-family:'Playfair Display',serif;font-weight:400;font-size:clamp(38px,5.6vw,68px);line-height:1.1;letter-spacing:-.5px;max-width:900px;margin:0 auto}
+.hero h1 em{font-style:italic}
+.hero .sub{font-size:19px;line-height:1.6;color:var(--text-muted);max-width:620px;margin:22px auto 0}
+.hero .quote{font-family:'Playfair Display',serif;font-style:italic;font-size:15px;color:var(--text-muted);margin:22px auto 32px}
+
+/* BIG METRIC BAND */
+.band{background:var(--ink);color:#fff;text-align:center;padding:60px 24px 52px;position:relative;overflow:hidden}
+.band:before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(197,165,90,.20),transparent 65%)}
+.band>*{position:relative}
+.band .label{color:#e3c876}
+.band .big{font-family:'Playfair Display',serif;font-weight:900;font-size:clamp(84px,15vw,170px);line-height:1;color:#d9bc6e;margin:14px 0 6px;letter-spacing:-.02em}
+.band .big small{font-size:.5em;vertical-align:.62em}
+.band .bigsub{font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(24px,3vw,34px)}
+.band .bigsub em{color:#e3c876}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);max-width:820px;margin:38px auto 0;border-top:1px solid rgba(227,200,118,.3);padding-top:26px}
+.stat+.stat{border-left:1px solid rgba(227,200,118,.25)}
+.stat .n{font-family:'Playfair Display',serif;font-weight:900;font-size:clamp(28px,4vw,42px);line-height:1}
+.stat .n i{color:#d9bc6e;font-weight:400}
+.stat .t{font-size:13px;color:#bfb39a;margin-top:8px;letter-spacing:.03em}
+@media(max-width:560px){.stats{grid-template-columns:1fr;gap:22px}.stat+.stat{border-left:0;border-top:1px solid rgba(227,200,118,.2);padding-top:20px}}
+
+/* ENDORSED + PRESS */
+.endorsed{padding:64px 24px 20px;text-align:center}
+.faces{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;max-width:720px;margin:26px auto 0}
+.face img{width:100%;max-width:190px;aspect-ratio:5/6;object-fit:cover;object-position:center 22%;border-radius:4px;display:block;margin:0 auto}
+.face .fname{font-weight:700;font-size:16px;margin-top:12px}
+.face .ftitle{font-size:13px;color:var(--text-muted);margin-top:2px}
+.press{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:18px 30px;padding:40px 24px 64px}
+.pr{display:flex;align-items:center;gap:9px}
+.pr .ic{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.forbes .ic{background:#111;color:#fff;font-family:'Playfair Display',serif;font-weight:900;font-size:17px}
+.forbes .w{font-family:'Playfair Display',serif;font-weight:900;font-size:28px}
+.coindesk .ic{background:#f7d046}
+.coindesk .w{font-weight:800;font-size:24px}
+.bi .w{font-weight:800;font-size:17px;line-height:.95}
+.press .sep{width:1px;height:26px;background:var(--border)}
+@media(max-width:560px){.press .sep{display:none}}
+
+/* TESTIMONIAL */
+.testi{background:var(--section-bg);padding:64px 24px;text-align:center}
+.testi .kicker{font-family:'Playfair Display',serif;font-size:clamp(26px,3.4vw,36px);margin-bottom:18px}
+.testi blockquote{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(19px,2.2vw,23px);line-height:1.5;max-width:720px;margin:0 auto;color:var(--text-body)}
+.testi cite{display:block;font-style:normal;font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-dark);margin-top:18px}
+
+/* PROSE */
+.prose{padding:64px 0}
+.prose h2{font-family:'Playfair Display',serif;font-style:italic;font-weight:400;font-size:clamp(28px,3.4vw,36px);margin-bottom:22px}
+.prose p{font-size:17px;line-height:1.75;color:var(--text-body);margin-bottom:18px}
+.prose ul.checks{list-style:none;margin:6px 0 22px}
+.prose ul.checks li{position:relative;padding-left:30px;font-size:17px;line-height:1.6;margin-bottom:10px;color:var(--text-body)}
+.prose ul.checks li:before{content:"";position:absolute;left:2px;top:9px;width:12px;height:6px;border-left:2px solid var(--gold);border-bottom:2px solid var(--gold);transform:rotate(-45deg)}
+
+/* PILLARS */
+.pillars-sec{background:var(--section-bg);padding:64px 24px}
+.pillars-sec h2{font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(28px,3.4vw,38px);text-align:center;margin:10px 0 36px}
+.pillars-sec h2 em{color:var(--gold-dark)}
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;max-width:1040px;margin:0 auto}
+.pillar{border-top:2px solid var(--gold);padding-top:16px}
+.pillar .num{font-size:12px;font-weight:700;letter-spacing:.16em;color:var(--gold-dark)}
+.pillar h3{font-size:17px;font-weight:800;letter-spacing:.03em;text-transform:uppercase;margin:6px 0 8px}
+.pillar p{font-size:15.5px;line-height:1.6;color:var(--text-muted)}
+@media(max-width:760px){.pillars{grid-template-columns:1fr}}
+
+/* FOUNDER RESULTS */
+.founders-sec{background:var(--section-bg);padding:64px 24px}
+.founders-sec h2{font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(28px,3.4vw,38px);text-align:center;margin:10px 0 34px}
+.tcards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;max-width:1160px;margin:0 auto}
+.tlisten{display:inline-block;margin-top:12px;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-dark);text-decoration:none}
+.tcard{background:#fff;border:1px solid var(--border);border-top:3px solid var(--gold);padding:30px 30px 26px;display:flex;flex-direction:column}
+.tstat{font-family:'Playfair Display',serif;font-weight:900;font-size:26px;color:var(--text-primary)}
+.tstat span{font-family:'Source Sans 3',sans-serif;font-weight:600;font-size:14px;color:var(--gold-dark);letter-spacing:.04em}
+.tdetail{font-size:14px;color:var(--text-muted);margin:6px 0 16px}
+.tcard blockquote{font-family:'Playfair Display',serif;font-style:italic;font-size:17px;line-height:1.55;color:var(--text-body);flex:1}
+.tcard cite{font-style:normal;font-weight:700;font-size:15px;margin-top:18px}
+.tcard cite span{display:block;font-weight:400;font-size:13px;color:var(--text-muted)}
+@media(max-width:980px){.tcards{grid-template-columns:1fr;max-width:640px}}
+
+/* CASE STUDY CARD */
+.case{padding:64px 24px}
+.case-card{max-width:900px;margin:0 auto;background:var(--ink);color:#fff;border-radius:4px;padding:40px 44px;display:grid;grid-template-columns:1.3fr 1fr;gap:32px;align-items:center;text-decoration:none}
+.case-card h3{font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(24px,2.8vw,30px);line-height:1.25;margin:10px 0 14px}
+.case-card h3 em{color:#d9bc6e}
+.case-card p{color:#cfc6b2;font-size:15px;line-height:1.6}
+.case-card .go{display:inline-block;margin-top:18px;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#e3c876}
+.case-stats{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.case-stats .n{font-family:'Playfair Display',serif;font-weight:900;font-size:30px;color:#d9bc6e}
+.case-stats .t{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#bfb39a;margin-top:4px}
+@media(max-width:760px){.case-card{grid-template-columns:1fr;padding:30px 24px}}
+
+/* APPLICATION */
+.apply-sec{padding:72px 24px 80px;background:var(--section-bg)}
+.apply-grid{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:start}
+.apply-photo{width:100%;height:600px;object-fit:cover;display:block;box-shadow:0 20px 50px rgba(0,0,0,.12)}
+.apply-right h2{font-family:'Playfair Display',serif;font-weight:400;font-size:clamp(32px,3.8vw,48px);line-height:1.15}
+.apply-right .hero-sub{font-size:17px;color:var(--text-muted);line-height:1.6;margin-top:14px;max-width:500px}
+@media(max-width:860px){.apply-grid{grid-template-columns:1fr;gap:32px}.apply-photo{height:420px}}
 
 /* FORM */
-.apply-form{margin-top:32px;max-width:480px}
+.apply-form{margin-top:28px;max-width:520px}
 .form-group{margin-bottom:16px}
 .form-row{display:grid;gap:16px;margin-bottom:16px}
 .form-row.cols-2{grid-template-columns:1fr 1fr}
-.form-row.cols-3{grid-template-columns:1fr 1fr 1fr}
 .form-row .form-group{margin-bottom:0}
-@media(max-width:520px){.form-row.cols-2,.form-row.cols-3{grid-template-columns:1fr}}
-.form-group input,.form-group textarea{width:100%;font-family:'Source Sans 3',sans-serif;font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--text-primary);background:#fff;border:1px solid var(--border);border-radius:1px;padding:18px 18px;outline:none;transition:border-color .2s}
+@media(max-width:520px){.form-row.cols-2{grid-template-columns:1fr}}
+.form-group input,.form-group textarea{width:100%;font-family:'Source Sans 3',sans-serif;font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--text-primary);background:#fff;border:1px solid var(--border);border-radius:1px;padding:18px;outline:none;transition:border-color .2s}
 .form-group input::placeholder,.form-group textarea::placeholder{color:#8A8580;font-weight:600;letter-spacing:.12em;text-transform:uppercase;font-size:13px}
 .form-group input:focus,.form-group textarea:focus{border-color:var(--gold)}
-.form-group textarea{resize:vertical;min-height:110px;font-family:'Source Sans 3',sans-serif;text-transform:none;letter-spacing:normal}
-.form-group textarea::placeholder{text-transform:uppercase;letter-spacing:.12em}
-.deck-upload{position:relative;display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;background:#fff;border:1px dashed var(--border);border-radius:1px;padding:18px 18px;cursor:pointer;transition:border-color .2s}
+.form-group textarea{resize:vertical;min-height:110px;text-transform:none;letter-spacing:normal}
+.deck-upload{position:relative;display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;background:#fff;border:1px dashed var(--border);border-radius:1px;padding:18px;cursor:pointer;transition:border-color .2s}
 .deck-upload:hover,.deck-upload.has-file{border-color:var(--gold)}
 .deck-upload input{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
-.deck-label{font-family:'Source Sans 3',sans-serif;font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#8A8580;white-space:nowrap}
+.deck-label{font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#8A8580;white-space:nowrap}
 .deck-upload.has-file .deck-label{color:var(--text-primary)}
 .deck-upload.missing{border-color:#b3261e}
 .deck-upload.missing .deck-name{color:#b3261e}
-.deck-name{font-family:'Source Sans 3',sans-serif;font-size:13px;color:var(--text-muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
+.deck-name{font-size:13px;color:var(--text-muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
 .submit-btn{display:inline-block;margin-top:6px;padding:19px 56px;background:var(--gold-dark);color:#fff;font-family:'Source Sans 3',sans-serif;font-size:14px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;border:none;border-radius:1px;cursor:pointer;transition:background .2s}
 .submit-btn:hover{background:#8C6F2E}
-.apply-success{display:none;font-family:'Source Sans 3',sans-serif;font-size:17px;line-height:1.7;color:var(--text-primary);max-width:480px;margin-top:24px}
+.apply-success{display:none;margin-top:24px}
+.apply-success p{font-size:17px;line-height:1.7;color:var(--text-primary);max-width:520px}
+.apply-success p strong{font-weight:700}
+.apply-sec.booked .apply-photo{display:none}
+.apply-sec.booked .apply-grid{grid-template-columns:1fr;max-width:1080px}
+.apply-sec.booked .apply-right h2{display:none}
+.apply-sec.booked .apply-right .hero-sub{display:none}
+.apply-sec.booked .apply-success{margin-top:8px}
+.apply-sec.booked .apply-success p{max-width:none;font-size:19px}
+.booking{display:none;max-width:1080px;margin:36px auto 0;background:#fff;border:1px solid var(--border)}
+.booking iframe{display:block;width:100%;height:760px;border:0}
+@media(max-width:760px){.booking iframe{height:1060px}}
 
-@media(max-width:860px){
-  .hero-grid{grid-template-columns:1fr;gap:32px}
-  .hero-photo{height:420px}
-  .hero-right{text-align:left}
-}
-
-/* FOOTER (matches the live kickoff/apply pages, CEO Cohort branding) */
+/* FOOTER */
 footer{max-width:900px;margin:0 auto;padding:40px 24px 56px;border-top:1px solid var(--border);text-align:center}
-.footer-name{font-family:'Source Sans 3',sans-serif;font-size:13px;font-weight:600;color:var(--text-primary);margin-bottom:12px}
+.footer-name{font-size:13px;font-weight:600;margin-bottom:12px}
 .footer-links{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-bottom:16px}
-.footer-links a{font-family:'Source Sans 3',sans-serif;font-size:12px;color:var(--text-muted);text-decoration:none}
+.footer-links a{font-size:12px;color:var(--text-muted);text-decoration:none}
 .footer-links a:hover{color:var(--text-primary)}
-.footer-copy{font-family:'Source Sans 3',sans-serif;font-size:12px;color:var(--text-muted)}
+.footer-copy{font-size:12px;color:var(--text-muted)}
 </style>
 </head>
 <body>
 
-<div class="top-bar">
-<a href="https://theceocohort.com" class="nav-logo">
-<div class="nav-logo-icon"><img src="images/logo.png" alt="The CEO Cohort"></div>
-<span class="nav-logo-text">The CEO Cohort<sup>&trade;</sup></span>
-</a>
+<nav>
+  <div class="side left">
+    <a href="#about">About</a>
+    <a href="https://casestudies.uscapitalpartnersfund.com">Case Studies</a>
+  </div>
+  <a href="#top" class="nav-logo"><img src="images/logo.png" alt="The CEO Cohort"><span>The CEO Cohort<sup>&trade;</sup></span></a>
+  <div class="side right">
+    <a href="https://podcasts.apple.com/us/podcast/the-ceo-cohort-kickoff/id1612031713?i=1000750717641" target="_blank">Podcast</a>
+    <a href="#apply" class="btn">Apply</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="label">The Last Best Raising Cohort</div>
+  <h1>Close Fortune 100 deals and <em>never have to raise a round again.</em></h1>
+  <p class="sub">The Frontier Raising Protocol: closing enterprise deals is easier than you think &mdash; and your current product and experience are enough.</p>
+  <p class="quote">&ldquo;If accelerators take you from 0 to 1, The CEO Cohort takes you from 1 to n.&rdquo; &mdash; Jonathan Herzog</p>
+  <a href="#apply" class="btn">Apply</a>
+</header>
+
+<section class="band">
+  <div class="label">The Frontier Raising Protocol</div>
+  <div class="big">$373<small>B</small></div>
+  <div class="bigsub">Exit to <em>Community</em></div>
+  <div class="stats">
+    <div class="stat"><div class="n">100M<i>+</i></div><div class="t">Ed-Tech Startup Built</div></div>
+    <div class="stat"><div class="n">72<i>/100</i></div><div class="t">Fortune 100 Enterprises Closed</div></div>
+    <div class="stat"><div class="n">$110B<i>+</i></div><div class="t">Raised by Founders Coached</div></div>
+  </div>
+</section>
+
+<section class="endorsed">
+  <div class="label">Endorsed by</div>
+  <div class="faces">
+    <div class="face"><img src="images/vitalik.jpg" alt="Vitalik Buterin"><div class="fname">Vitalik Buterin</div><div class="ftitle">Co-Founder, Ethereum</div></div>
+    <div class="face"><img src="images/altman.jpg" alt="Sam Altman"><div class="fname">Sam Altman</div><div class="ftitle">CEO, OpenAI</div></div>
+    <div class="face"><img src="images/musk.jpg" alt="Elon Musk"><div class="fname">Elon Musk</div><div class="ftitle">CEO, Tesla &amp; SpaceX</div></div>
+  </div>
+</section>
+<div class="press">
+  <span class="label">As seen in</span>
+  <div class="pr forbes"><div class="ic">F</div><div class="w">Forbes</div></div>
+  <div class="sep"></div>
+  <div class="pr coindesk"><div class="ic"><svg width="15" height="15" viewBox="0 0 12 12" fill="#111"><rect x="1" y="1" width="2.4" height="2.4"/><rect x="4.8" y="1" width="2.4" height="2.4"/><rect x="1" y="4.8" width="2.4" height="2.4"/><rect x="1" y="8.6" width="2.4" height="2.4"/><rect x="4.8" y="8.6" width="2.4" height="2.4"/><rect x="8.6" y="4.8" width="2.4" height="2.4"/></svg></div><div class="w">CoinDesk</div></div>
+  <div class="sep"></div>
+  <div class="pr bi"><div class="w">Business<br>Insider</div></div>
 </div>
 
-<section class="hero-section">
-  <div class="hero-grid">
-    <img class="hero-photo" src="images/headshot.jpeg" alt="Jonathan Herzog">
-    <div class="hero-right">
-      <h1 class="hero-headline">Apply for The Last Best Raising Cohort.</h1>
-      <p class="hero-sub">Apply below and our team will follow up with the next steps.</p>
+<section class="testi">
+  <div class="kicker">&ldquo;One of the most valuable things I&rsquo;ve done as a founder.&rdquo;</div>
+  <blockquote>&ldquo;Seeing that clearly changed how I lead. I make decisions with more awareness and less noise&hellip; For a founder carrying a lot at once, that perspective is worth more than any tactic.&rdquo;</blockquote>
+  <cite>Dr. Khatija Ali &middot; Founder &amp; CEO, BioSapien &middot; Raised $8M+</cite>
+</section>
+
+<section class="prose" id="about">
+  <div class="wrap">
+    <h2>What is The Raising Cohort?</h2>
+    <p>The Raising Cohort is the Tier 1 Institution for tech founders to make money. Our founders include bootstrapped to public company CEOs, seed stage to Series D ventures, from every industry and sector. You should apply if you want to 1000x your business and life.</p>
+    <p>If you&rsquo;re accepted, you get everything from Fortune 100 Masterclasses to Tier 1 Fundraising to Live Cohort Coaching Calls to 24/7 ongoing async support. If accelerators take you from 0 to 1, The CEO Cohort takes you from 1 to n.</p>
+    <p>Every founder works directly with General Partner Jonathan Herzog. Jonathan is a successful ed-tech startup founder, has advised thousands of startups, including coach to OpenAI, Reddit, Coinbase, Flexport, and works closely with a small group of startups he personally hand-selects every batch.</p>
+    <p>Trained by Bill Campbell, coach to Steve Jobs, Jeff Bezos, and Bill Gates, Jonathan&rsquo;s work has received endorsements from the likes of Elon Musk, Jack Dorsey, Matt Mullenweg, and Vitalik Buterin. He is Harvard&rsquo;s Valedictorian, former Goldman Sachs, and built an exit to community of $373+ Billion.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="prose">
+  <div class="wrap">
+    <h2>You don&rsquo;t have to depend on investors.</h2>
+    <p>You probably think your hardest problem is raising the next round, hiring the best team, or shipping product. The actual root cause is revenue. If you could 10x revenue this year, none of those problems would matter nearly as much. This is exactly what customer-financed acquisition solves.</p>
+    <p>Founders in the cohort have been backed by a16z, Founders Fund, YC, Sequoia, and founders and execs at Google, Microsoft, NVIDIA and Coinbase &mdash; and are actively closing deals with Amazon, Netflix, United, Tata, United Health, Mayo Clinic and Cedars Sinai, without hiring more full-time employees, agencies, consultancies or ad spend.</p>
+    <p>These tools cut your time to close by a factor of 10 and 10x your deal volume. They end the era of complex RFPs, LOIs and ghosted term sheets, and create a consistent faucet of cash-flow generating demand. This process is designed to:</p>
+    <ul class="checks">
+      <li>Create 1000x leverage for you and your business</li>
+      <li>Solve your hardest business problems live, together</li>
+      <li>Achieve customer-financed acquisition so you never have to raise a round or hire again</li>
+    </ul>
+  </div>
+</section>
+
+<section class="pillars-sec">
+  <div class="label" style="text-align:center;">The Frontier Raising Protocol</div>
+  <h2>The right leverage changes <em>everything</em></h2>
+  <div class="pillars">
+    <div class="pillar"><div class="num">01</div><h3>Frontier Raising Protocol</h3><p>The playbook behind a $373B exit to community. Tier 1 VCs, Angels, UHNWIs and Family Offices.</p></div>
+    <div class="pillar"><div class="num">02</div><h3>Dual Process Model</h3><p>Run your raise and your enterprise pipeline in parallel &mdash; each one compounding the other.</p></div>
+    <div class="pillar"><div class="num">03</div><h3>Fortune 100 Close</h3><p>Close 72 of the Fortune 100 Enterprises. Bypass RFPs, LOIs, or 6-month cycles.</p></div>
+  </div>
+</section>
+
+<section class="prose">
+  <div class="wrap">
+    <h2>So how does it work?</h2>
+    <p>These tools are delivered in confidential CEO Cohort Coaching, exclusively with Jonathan Herzog &mdash; every tool he has created and used over the past decade as a coach, founder and operator. Imagine YC batches for founder group coaching.</p>
+    <p>You get the full tactical stack for direct, high-leverage distribution and, even more importantly, the root-cause inductive reasoning process &mdash; the &ldquo;lines of code&rdquo; in your mind. 80% of founders had never worked with a coach before. 70% were first-generation immigrants. In an age of infinite leverage, judgment is the most important skill: even a 10% delta in the quality and velocity of your decisions will create or destroy tens to hundreds of millions in value.</p>
+    <p>What&rsquo;s included: weekly confidential CEO Cohort coaching calls, and 24/7 on-demand access to the proprietary Advanced Resource Vault and Private Podcast recordings, including the end-to-end customer-financed acquisition protocol. There is no commitment required.</p>
+  </div>
+</section>
+
+<section class="founders-sec">
+  <div class="label" style="text-align:center;">Founder Results</div>
+  <h2>Founders who used the protocol</h2>
+  <div class="tcards">
+    <div class="tcard">
+      <div class="tstat">$50M <span>raised</span></div>
+      <div class="tdetail">$38M of it in the 7 months after joining The CEO Cohort</div>
+      <blockquote>&ldquo;Jonathan has been the perfect counterpart, helping me challenge old beliefs, gain confidence in my decisions, and turn uncertainty into clarity and action.&rdquo;</blockquote>
+      <cite>Doron Merdinger<span>CEO &amp; Founder, Doroni Aerospace (eVTOL)</span></cite>
+    </div>
+    <div class="tcard">
+      <div class="tstat">7 <span>Fortune 100 closed</span> &middot; $20M+ <span>raised</span></div>
+      <div class="tdetail">NVIDIA-backed AI for Telcos, through The CEO Cohort process</div>
+      <blockquote>&ldquo;Jonathan planted the seed that &lsquo;the thought is the result,&rsquo; a principle that has become the foundation of my growth as CEO of Personal AI. He possesses a rare ability to untangle complex, chaotic mental models into clear, actionable frameworks that push the boundaries of what is possible for a founder.&rdquo;</blockquote>
+      <cite>Suman Kanuganti<span>Founder &amp; CEO, Personal.AI</span></cite>
+    </div>
+    <div class="tcard">
+      <div class="tstat">$15M+ <span>raised</span> &middot; $100M+ <span>tax paid</span></div>
+      <div class="tdetail">Remitian, the AI Stripe for tax pay &mdash; $100M+ in U.S. tax payments processed, partnerships with the likes of Thomson Reuters</div>
+      <blockquote>&ldquo;I am literally the 1000x case study of this work.&rdquo;</blockquote>
+      <a class="tlisten" href="https://lnkd.in/extnHHXd" target="_blank" rel="noopener">Hear the full conversation &rarr;</a>
+      <cite>Solon Angel<span>Founder &amp; CEO, Remitian</span></cite>
+    </div>
+  </div>
+</section>
+
+<section class="case">
+  <a class="case-card" href="https://casestudies.uscapitalpartnersfund.com">
+    <div>
+      <div class="label" style="color:#e3c876;">Client Case Study &middot; AtoB</div>
+      <h3>How we helped AtoB grow revenue <em>500%</em> in 1 year on the way to a <em>$1.2B+</em> valuation</h3>
+      <p>&ldquo;I just wish I had started working with you sooner&hellip; this 1-hour coaching call with you is the most valuable exchange I&rsquo;ve had in my career.&rdquo; &mdash; Vignan Velivela, Founder &amp; CEO</p>
+      <span class="go">Read the case study &rarr;</span>
+    </div>
+    <div class="case-stats">
+      <div><div class="n">500%</div><div class="t">Revenue Growth</div></div>
+      <div><div class="n">$25M+</div><div class="t">ARR Generated</div></div>
+      <div><div class="n">$1.2B+</div><div class="t">Valuation</div></div>
+      <div><div class="n">$285M+</div><div class="t">Total Raised</div></div>
+    </div>
+  </a>
+</section>
+
+<section class="apply-sec" id="apply">
+  <div class="apply-grid">
+    <img class="apply-photo" src="images/headshot.jpeg" alt="Jonathan Herzog">
+    <div class="apply-right">
+      <div class="label" style="margin-bottom:14px;">Application</div>
+      <h2>Apply for The Last Best Raising Cohort.</h2>
+      <p class="hero-sub">Apply below, then book your 1-on-1 consult right away on the next screen.</p>
 
       <form class="apply-form" id="mastermind-form">
         <div class="form-row cols-2">
-          <div class="form-group">
-            <input type="text" id="fullName" name="fullName" placeholder="Full Name" required autocomplete="name">
-          </div>
-          <div class="form-group">
-            <input type="email" id="email" name="email" placeholder="Email" required autocomplete="email">
-          </div>
+          <div class="form-group"><input type="text" id="fullName" name="fullName" placeholder="Full Name" required autocomplete="name"></div>
+          <div class="form-group"><input type="email" id="email" name="email" placeholder="Email" required autocomplete="email"></div>
         </div>
         <div class="form-row cols-2">
-          <div class="form-group">
-            <input type="text" id="companyName" name="companyName" placeholder="Company Name" required>
-          </div>
-          <div class="form-group">
-            <input type="text" id="website" name="website" placeholder="Website" required>
-          </div>
+          <div class="form-group"><input type="text" id="companyName" name="companyName" placeholder="Company Name" required></div>
+          <div class="form-group"><input type="text" id="website" name="website" placeholder="Website" required></div>
         </div>
         <div class="form-row cols-2">
-          <div class="form-group">
-            <input type="text" id="targetRoundSize" name="targetRoundSize" placeholder="Target Round Size" required>
-          </div>
-          <div class="form-group">
-            <input type="text" id="arr" name="arr" placeholder="ARR" required>
-          </div>
+          <div class="form-group"><input type="text" id="targetRoundSize" name="targetRoundSize" placeholder="Target Round Size" required></div>
+          <div class="form-group"><input type="text" id="arr" name="arr" placeholder="ARR" required></div>
         </div>
+        <div class="form-group"><input type="text" id="linkedin" name="linkedin" placeholder="LinkedIn (optional)"></div>
         <div class="form-group">
           <textarea id="whyApplying" name="whyApplying" placeholder="Why am I applying to The Raising Cohort?" required></textarea>
         </div>
@@ -125,10 +358,11 @@ footer{max-width:900px;margin:0 auto;padding:40px 24px 56px;border-top:1px solid
         <button type="submit" class="submit-btn">Submit</button>
       </form>
       <div class="apply-success" id="apply-success">
-        <p>Thanks - your application to The Raising Cohort has been received. We'll be in touch shortly with next steps.</p>
+        <p><strong>Thanks - your application to The Raising Cohort has been received.</strong><br>Pick a time below to book your 1-on-1 consult now.</p>
       </div>
     </div>
   </div>
+  <div class="booking" id="booking"></div>
 </section>
 
 <footer>
@@ -144,6 +378,23 @@ footer{max-width:900px;margin:0 auto;padding:40px 24px 56px;border-top:1px solid
 </footer>
 
 <script>
+// After a successful application, embed Calendly inline (prefilled) so they can book immediately.
+var CALENDLY_URL = 'https://calendly.com/ceocohort/consult';
+function showBooking(){
+  var q = new URLSearchParams({
+    embed_domain: location.hostname || 'uscapitalpartnersfund.com',
+    embed_type: 'Inline',
+    hide_gdpr_banner: '1',
+    name: document.getElementById('fullName').value.trim(),
+    email: document.getElementById('email').value.trim()
+  });
+  var box = document.getElementById('booking');
+  box.innerHTML = '<iframe src="' + CALENDLY_URL + '?' + q.toString() + '" title="Book your consult" allow="payment"></iframe>';
+  box.style.display = 'block';
+  document.querySelector('.apply-sec').classList.add('booked');
+  setTimeout(function(){ document.getElementById('apply-success').scrollIntoView({behavior:'smooth', block:'start'}); }, 50);
+}
+
 var deckInput = document.getElementById('deck');
 var MAX_DECK_BYTES = 50 * 1024 * 1024;
 deckInput.addEventListener('change', function(){
@@ -203,6 +454,7 @@ document.getElementById('mastermind-form').addEventListener('submit', function(e
       if (response.ok) {
         form.style.display = 'none';
         document.getElementById('apply-success').style.display = 'block';
+        showBooking();
       } else {
         submitBtn.disabled = false;
         alert('Something went wrong submitting your application. Please try again.');
