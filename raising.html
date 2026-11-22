@@ -102,7 +102,7 @@ nav .side a.btn{color:#fff;padding:9px 20px;font-size:12px}
 /* FOUNDER RESULTS */
 .founders-sec{background:var(--section-bg);padding:64px 24px}
 .founders-sec h2{font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(28px,3.4vw,38px);text-align:center;margin:10px 0 34px}
-.tcards{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;max-width:1040px;margin:0 auto}
+.tcards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;max-width:1180px;margin:0 auto}
 .tcard{background:#fff;border:1px solid var(--border);border-top:3px solid var(--gold);padding:30px 30px 26px;display:flex;flex-direction:column}
 .tstat{font-family:'Playfair Display',serif;font-weight:900;font-size:26px;color:var(--text-primary)}
 .tstat span{font-family:'Source Sans 3',sans-serif;font-weight:600;font-size:14px;color:var(--gold-dark);letter-spacing:.04em}
@@ -110,7 +110,41 @@ nav .side a.btn{color:#fff;padding:9px 20px;font-size:12px}
 .tcard blockquote{font-family:'Playfair Display',serif;font-style:italic;font-size:17px;line-height:1.55;color:var(--text-body);flex:1}
 .tcard cite{font-style:normal;font-weight:700;font-size:15px;margin-top:18px}
 .tcard cite span{display:block;font-weight:400;font-size:13px;color:var(--text-muted)}
-@media(max-width:980px){.tcards{grid-template-columns:1fr;max-width:640px}}
+@media(max-width:1020px){.tcards{grid-template-columns:1fr 1fr}}@media(max-width:680px){.tcards{grid-template-columns:1fr}}
+
+/* FEATURE (Vignan) */
+.feature{background:var(--ink);color:#fff;padding:64px 24px}
+.feature-inner{max-width:1040px;margin:0 auto;display:grid;grid-template-columns:260px 1fr;gap:44px;align-items:center}
+.feature-photo{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:4px;filter:grayscale(1)}
+.feature .label{color:#e3c876}
+.feature h2{font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(24px,2.8vw,32px);line-height:1.25;margin:10px 0 16px}
+.feature h2 em{color:#d9bc6e}
+.feature blockquote{font-family:'Playfair Display',serif;font-style:italic;font-size:17px;line-height:1.55;color:#e8e1d0}
+.feature cite{display:block;font-style:normal;font-weight:700;font-size:15px;margin-top:14px}
+.feature cite span{display:block;font-weight:400;font-size:13px;color:#bfb39a}
+.feature-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:24px 0 18px;border-top:1px solid rgba(227,200,118,.3);padding-top:18px}
+.feature-stats .n{font-family:'Playfair Display',serif;font-weight:900;font-size:26px;color:#d9bc6e}
+.feature-stats .t{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#bfb39a;margin-top:2px}
+.feature .go{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#e3c876;text-decoration:none}
+@media(max-width:760px){.feature-inner{grid-template-columns:1fr;gap:24px}.feature-photo{max-width:220px}.feature-stats{grid-template-columns:1fr 1fr}}
+.thead{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.thead img{width:56px;height:56px;border-radius:50%;object-fit:cover;flex-shrink:0}
+.tname{font-weight:700;font-size:15px}
+.tname span{display:block;font-weight:400;font-size:13px;color:var(--text-muted)}
+.tlisten{display:inline-block;margin-top:14px;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-dark);text-decoration:none}
+/* BIO + LOGOS (from one-pager) */
+.bio{max-width:900px;margin:0 auto;padding:56px 24px 28px;display:flex;gap:26px;align-items:flex-start}
+.bio>img{width:110px;height:110px;border-radius:50%;object-fit:cover;flex-shrink:0}
+.bio-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:10px}
+.bio-head h3{font-family:'Playfair Display',serif;font-size:30px}
+.bio-head h3 em{color:var(--gold-dark)}
+.bio-head .role{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-dark)}
+.bio ul{padding-left:18px}
+.bio li{font-size:16px;line-height:1.55;color:var(--text-body);margin-bottom:5px}
+.logos{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;max-width:900px;margin:0 auto 64px;padding:0 24px}
+.logocell{border:1px solid var(--border);border-radius:3px;height:58px;display:flex;align-items:center;justify-content:center;padding:10px 14px}
+.logocell img{max-width:100%;max-height:100%;object-fit:contain}
+@media(max-width:640px){.bio{flex-direction:column;gap:16px}.logos{grid-template-columns:repeat(3,1fr)}}
 
 /* CASE STUDY CARD */
 .case{padding:64px 24px}
@@ -225,10 +259,23 @@ footer{max-width:900px;margin:0 auto;padding:40px 24px 56px;border-top:1px solid
   <div class="pr bi"><div class="w">Business<br>Insider</div></div>
 </div>
 
-<section class="testi">
-  <div class="kicker">&ldquo;One of the most valuable things I&rsquo;ve done as a founder.&rdquo;</div>
-  <blockquote>&ldquo;Seeing that clearly changed how I lead. I make decisions with more awareness and less noise&hellip; For a founder carrying a lot at once, that perspective is worth more than any tactic.&rdquo;</blockquote>
-  <cite>Dr. Khatija Ali &middot; Founder &amp; CEO, BioSapien &middot; Raised $8M+</cite>
+<section class="feature">
+  <div class="feature-inner">
+    <img class="feature-photo" src="images/vignan.jpg" alt="Vignan Velivela">
+    <div>
+      <div class="label">Client Case Study &middot; AtoB</div>
+      <h2>How we helped AtoB grow revenue <em>500%</em> in 1 year, generate <em>$25M+ ARR</em>, and scale into a <em>$1.2B+</em> valuation.</h2>
+      <blockquote>&ldquo;I just wish I had started working with you sooner. I&rsquo;m personally backed by the CEOs of Uber, Stripe, PayPal, Google, Salesforce, AngelList, DoorDash, Instacart, Coinbase &mdash; and this 1-hour coaching call with you is the most valuable exchange I&rsquo;ve had in my career.&rdquo;</blockquote>
+      <cite>Vignan Velivela<span>Founder &amp; CEO, AtoB</span></cite>
+      <div class="feature-stats">
+        <div><div class="n">500%</div><div class="t">Revenue Growth</div></div>
+        <div><div class="n">$25M+</div><div class="t">ARR Generated</div></div>
+        <div><div class="n">$1.2B+</div><div class="t">Valuation</div></div>
+        <div><div class="n">$285M+</div><div class="t">Total Raised</div></div>
+      </div>
+      <a class="go" href="https://casestudies.uscapitalpartnersfund.com">Read the full case study &rarr;</a>
+    </div>
+  </div>
 </section>
 
 <section class="prose" id="about">
@@ -267,12 +314,33 @@ footer{max-width:900px;margin:0 auto;padding:40px 24px 56px;border-top:1px solid
   </div>
 </section>
 
+<section class="bio">
+  <img src="images/jonathan-herzog.png" alt="Jonathan Herzog">
+  <div>
+    <div class="bio-head"><h3>Jonathan <em>Herzog</em></h3><span class="role">Managing Partner</span></div>
+    <ul>
+      <li>Harvard Valedictorian, JD/MBA, serial tech founder</li>
+      <li>Master Certified Coach, trained by Bill Campbell &mdash; coach to Steve Jobs, Jeff Bezos &amp; Bill Gates</li>
+      <li>Built ed-tech startup to 100M+ and $373B+ exit to community</li>
+      <li>Former Goldman Sachs, Balaji Srinivasan, Andrew Yang exec</li>
+      <li>Endorsed by Vitalik Buterin, Matt Mullenweg, coach to founders who raised $110B+ incl. Sam Altman, Naval Ravikant et al</li>
+    </ul>
+  </div>
+</section>
+<div class="logos">
+  <div class="logocell"><img src="images/harvard.png" alt="Harvard"></div>
+  <div class="logocell"><img src="images/goldman.svg" alt="Goldman Sachs"></div>
+  <div class="logocell"><img src="images/microsoft.png" alt="Microsoft"></div>
+  <div class="logocell"><img src="images/jpmorgan.png" alt="J.P.Morgan"></div>
+  <div class="logocell"><img src="images/google.svg" alt="Google"></div>
+</div>
+
 <section class="prose">
   <div class="wrap">
     <h2>So how does it work?</h2>
     <p>These tools are delivered in confidential CEO Cohort Coaching, exclusively with Jonathan Herzog &mdash; every tool he has created and used over the past decade as a coach, founder and operator. Imagine YC batches for founder group coaching.</p>
     <p>You get the full tactical stack for direct, high-leverage distribution and, even more importantly, the root-cause inductive reasoning process &mdash; the &ldquo;lines of code&rdquo; in your mind. 80% of founders had never worked with a coach before. 70% were first-generation immigrants. In an age of infinite leverage, judgment is the most important skill: even a 10% delta in the quality and velocity of your decisions will create or destroy tens to hundreds of millions in value.</p>
-    <p>What&rsquo;s included: weekly confidential CEO Cohort coaching calls, and 24/7 on-demand access to the proprietary Advanced Resource Vault and Private Podcast recordings, including the end-to-end customer-financed acquisition protocol. There is no commitment required.</p>
+    <p>What&rsquo;s included: weekly confidential CEO Cohort coaching calls, and 24/7 on-demand access to the proprietary Advanced Resource Vault and Private Podcast recordings, including the end-to-end customer-financed acquisition protocol.</p>
   </div>
 </section>
 
@@ -281,48 +349,46 @@ footer{max-width:900px;margin:0 auto;padding:40px 24px 56px;border-top:1px solid
   <h2>Founders who used the protocol</h2>
   <div class="tcards">
     <div class="tcard">
+      <div class="thead"><img src="images/doron.jpg" alt="Doron Merdinger"><div class="tname">Doron Merdinger<span>CEO &amp; Founder, Doroni Aerospace (eVTOL)</span></div></div>
       <div class="tstat">$50M <span>raised</span></div>
       <div class="tdetail">$38M of it in the 7 months after joining The CEO Cohort</div>
       <blockquote>&ldquo;Jonathan has been the perfect counterpart, helping me challenge old beliefs, gain confidence in my decisions, and turn uncertainty into clarity and action.&rdquo;</blockquote>
-      <cite>Doron Merdinger<span>CEO &amp; Founder, Doroni Aerospace (eVTOL)</span></cite>
+      <a class="tlisten" href="https://podcasts.apple.com/us/podcast/client-interview-doron-merdinger-founder-ceo-of/id1612031713?i=1000769990655" target="_blank" rel="noopener">Listen to the interview &rarr;</a>
     </div>
     <div class="tcard">
+      <div class="thead"><img src="images/suman.jpg" alt="Suman Kanuganti"><div class="tname">Suman Kanuganti<span>Founder &amp; CEO, Personal.AI</span></div></div>
       <div class="tstat">7 <span>Fortune 100 closed</span> &middot; $20M+ <span>raised</span></div>
       <div class="tdetail">NVIDIA-backed AI for Telcos, through The CEO Cohort process</div>
       <blockquote>&ldquo;Jonathan planted the seed that &lsquo;the thought is the result,&rsquo; a principle that has become the foundation of my growth as CEO of Personal AI. He possesses a rare ability to untangle complex, chaotic mental models into clear, actionable frameworks that push the boundaries of what is possible for a founder.&rdquo;</blockquote>
-      <cite>Suman Kanuganti<span>Founder &amp; CEO, Personal.AI</span></cite>
+      <a class="tlisten" href="https://podcasts.apple.com/us/podcast/client-interview-suman-kanuganti-personal-ai-founder/id1612031713?i=1000655784303" target="_blank" rel="noopener">Listen to the interview &rarr;</a>
     </div>
     <div class="tcard">
+      <div class="thead"><img src="images/davidi.jpg" alt="Davidi Vortman"><div class="tname">Davidi Vortman<span>Founder &amp; CEO, UltraSight</span></div></div>
+      <div class="tstat">$24M <span>Series B</span> &middot; $9M <span>Fortune 50 deal</span></div>
+      <div class="tdetail">Med-tech cardiac care backed by Mayo Clinic &mdash; partnerships with NYU Langone, Johnson &amp; Johnson and Abiomed</div>
+      <blockquote>&ldquo;I closed a $9 Million Fortune 50 biotech pharma enterprise deal&hellip; As an engineer, I looked at sales as a necessary evil. And [I learned] that sales is actually your biggest and most important skillset. Number 2 is the art of closing.&rdquo;</blockquote>
+    </div>
+    <div class="tcard">
+      <div class="thead"><img src="images/solon.jpg" alt="Solon Angel"><div class="tname">Solon Angel<span>Founder &amp; CEO, Remitian</span></div></div>
       <div class="tstat">$15M+ <span>raised</span> &middot; $100M+ <span>tax paid</span></div>
-      <div class="tdetail">Remitian, the AI Stripe for tax pay &mdash; $100M+ in U.S. tax payments processed, partnerships with the likes of Thomson Reuters</div>
+      <div class="tdetail">The AI Stripe for tax pay &mdash; $100M+ in U.S. tax payments processed, partnerships with the likes of Thomson Reuters</div>
       <blockquote>&ldquo;I am literally the 1000x case study of this work.&rdquo;</blockquote>
-      <cite>Solon Angel<span>Founder &amp; CEO, Remitian</span></cite>
     </div>
     <div class="tcard">
+      <div class="thead"><img src="images/justin.jpg" alt="Justin Mares"><div class="tname">Justin Mares<span>Founder &amp; CEO, TrueMed</span></div></div>
       <div class="tstat">$34M <span>Series A led by a16z</span> &middot; 2M+ <span>customers</span></div>
-      <div class="tdetail">TrueMed, health-tech &mdash; partnerships with the likes of Meta, Eight Sleep, Peloton, Whoop, AG1, Garmin, Tonal and Mark Hyman</div>
+      <div class="tdetail">Health-tech &mdash; partnerships with the likes of Meta, Eight Sleep, Peloton, Whoop, AG1, Garmin, Tonal and Mark Hyman</div>
       <blockquote>&ldquo;Jonathan is the Emotional Patterns Guy &mdash; he points out the things that I&rsquo;m doing unconsciously. I&rsquo;ll now go through my day and notice emotions coming up, notice stories I&rsquo;m telling myself, and notice patterns coming through in unproductive ways.&rdquo;</blockquote>
-      <cite>Justin Mares<span>Founder &amp; CEO, TrueMed</span></cite>
+    </div>
+    <div class="tcard">
+      <div class="thead"><img src="images/khatija.jpg" alt="Dr. Khatija Ali"><div class="tname">Dr. Khatija Ali<span>Founder &amp; CEO, BioSapien</span></div></div>
+      <div class="tstat">$8M+ <span>raised</span></div>
+      <div class="tdetail">Biotech &mdash; 3D-printed precision medicine cancer treatment</div>
+      <blockquote>&ldquo;Working with you was one of the most valuable things I&rsquo;ve done as a founder&hellip; For a founder carrying a lot at once, that perspective is worth more than any tactic.&rdquo;</blockquote>
     </div>
   </div>
 </section>
 
-<section class="case">
-  <a class="case-card" href="https://casestudies.uscapitalpartnersfund.com">
-    <div>
-      <div class="label" style="color:#e3c876;">Client Case Study &middot; AtoB</div>
-      <h3>How we helped AtoB grow revenue <em>500%</em> in 1 year on the way to a <em>$1.2B+</em> valuation</h3>
-      <p>&ldquo;I just wish I had started working with you sooner&hellip; this 1-hour coaching call with you is the most valuable exchange I&rsquo;ve had in my career.&rdquo; &mdash; Vignan Velivela, Founder &amp; CEO</p>
-      <span class="go">Read the case study &rarr;</span>
-    </div>
-    <div class="case-stats">
-      <div><div class="n">500%</div><div class="t">Revenue Growth</div></div>
-      <div><div class="n">$25M+</div><div class="t">ARR Generated</div></div>
-      <div><div class="n">$1.2B+</div><div class="t">Valuation</div></div>
-      <div><div class="n">$285M+</div><div class="t">Total Raised</div></div>
-    </div>
-  </a>
-</section>
 
 <section class="apply-sec" id="apply">
   <div class="apply-grid">
