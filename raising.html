@@ -104,6 +104,14 @@ nav .side a.btn{color:#fff;padding:9px 20px;font-size:12px}
 .stage-wrap{max-width:440px;margin:28px auto 0;padding:0 24px}
 .stage{display:block;width:100%;height:auto;border-radius:4px;box-shadow:0 18px 44px rgba(0,0,0,.14)}
 
+/* INCLUDED CARDS */
+.incl{padding:64px 24px 56px}
+.incl-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;max-width:1040px;margin:22px auto 0}
+.incl-card{border:1px solid var(--border);border-radius:4px;padding:34px 30px;background:#fff}
+.incl-card h3{font-family:'Playfair Display',serif;font-weight:700;font-size:22px;margin-bottom:10px}
+.incl-card p{font-size:16px;line-height:1.6;color:var(--text-muted)}
+@media(max-width:720px){.incl-grid{grid-template-columns:1fr}}
+
 /* TESTIMONIAL BANDS */
 .tband{background:#fff;padding:24px 24px 72px}
 .tband h2{font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(26px,3vw,34px);text-align:center;margin:8px 0 30px}
@@ -270,17 +278,13 @@ footer{max-width:900px;margin:0 auto;padding:40px 24px 56px;border-top:1px solid
   <div class="pr bi"><div class="w">Business<br>Insider</div></div>
 </div>
 
-<section class="prose" id="about">
-  <div class="wrap">
-    <h2>What is The Raising Cohort?</h2>
-    <p>The Raising Cohort is the Tier 1 Institution for tech founders to make money. Our founders include bootstrapped to public company CEOs, seed stage to Series D ventures, from every industry and sector. You should apply if you want to 1000x your business.</p>
-    <ul class="checks">
-      <li><strong>Fortune 100 Closing Protocol</strong> (70+ Fortune 100s)</li>
-      <li>Not chasing investors, RFPs, LOIs, and 6 month closing cycles.</li>
-      <li>Scale from heads-down product to distribution-led leader.</li>
-      <li>Deterministic distribution engine of working capital.</li>
-      <li><strong>Super-Aggregator</strong> &mdash; UHNWI, Tier 1 Frontier Lab, Angel, and Family Office (110B+ raised).</li>
-    </ul>
+<section class="incl" id="about">
+  <div class="label" style="text-align:center;">What&rsquo;s included</div>
+  <div class="incl-grid">
+    <div class="incl-card"><h3>The Tier 1 Fundraising Protocol</h3><p>Endorsed by, coach to founders who&rsquo;ve raised 110B+.</p></div>
+    <div class="incl-card"><h3>Weekly CEO Cohort</h3><p>Weekly CEO Cohort confidential calls.</p></div>
+    <div class="incl-card"><h3>Advanced Resource Vault</h3><p>Fundraising Objection Mastery, High-Velocity Closing, Deterministic Distribution, Customer Financed Acquisition, Minimum Viable Funnel.</p></div>
+    <div class="incl-card"><h3>Bonus VIP Deep-Dive</h3><p>Private deep dive and access to super-aggregator of every UHNWI, Tier 1 Fund, VC, Angel, Superangel, Family Office et al.</p></div>
   </div>
   <div class="apply-cta"><a href="#apply" class="btn">Apply</a></div>
 </section>
