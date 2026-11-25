@@ -112,7 +112,7 @@ CSS = '''
 '''
 
 def wins_html():
-    figs = "\n".join(f'''  <figure class="win"><img src="images/wins/{f}" alt="{html.escape(t)}: {html.escape(c)}" loading="lazy"><figcaption><b>{html.escape(t)}</b><span>{html.escape(c)}</span></figcaption></figure>''' for f, t, c in WINS)
+    figs = "\n".join(f'''  <figure class="win"><img src="images/wins/{f}" alt="{html.escape(t)}: {html.escape(c)}" loading="lazy"></figure>''' for f, t, c in WINS)
     return f'''<section class="wins-sec" id="wins">
   <div class="label" style="text-align:center;">Member Wins</div>
   <h2>Wins from The CEO Cohort</h2>
@@ -120,7 +120,6 @@ def wins_html():
   <div class="wins-grid">
 {figs}
   </div>
-  <p class="wins-note">Screenshots shared by members of The CEO Cohort. Individual results vary.</p>
 </section>
 '''
 
@@ -137,13 +136,8 @@ def faq_html():
 '''
 
 s = open("raising.html").read()
-if __name__ == "__main__" and "--wins" in __import__("sys").argv:  # 11/25: write Wins into raising.html (both sites)
-    r = open("raising.html").read()
-    r = re.sub(r'\n?<section class="wins-sec".*?</section>\n', "\n", r, flags=re.S)
-    r = re.sub(r"/\* 11/25 jonscap: WINS \+ FAQ \*/.*?(?=</style>)", "", r, flags=re.S)
-    r = r.replace("</style>", CSS + "</style>", 1)
-    i = r.index('<section class="apply-sec"'); r = r[:i] + wins_html() + "\n" + r[i:]
-    open("raising.html", "w").write(r); s = r
+s = s.replace("</style>", CSS + "</style>", 1)
+i = s.index('<section class="apply-sec"'); s = s[:i] + wins_html() + "\n" + s[i:]  # 11/25: Wins on jonscap.com ONLY
 s = re.sub(r"<title>.*?</title>\s*<meta name=\"description\"[^>]*>", lambda m: HEAD, s, count=1, flags=re.S)
 i = s.index("<footer>"); s = s[:i] + faq_html() + "\n" + s[i:]
 s = s.replace('<a href="https://www.theceocohort.com/privacy"', '<a href="#faq">FAQ</a>\n<a href="https://www.theceocohort.com/privacy"', 1)
