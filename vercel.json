@@ -1,6 +1,65 @@
 {
   "routes": [
     {
+      "src": "^/(.*)$",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jonscap.com"
+        }
+      ],
+      "status": 308,
+      "headers": {
+        "Location": "https://jonscap.com/$1"
+      }
+    },
+    {
+      "src": "^/$",
+      "has": [
+        {
+          "type": "host",
+          "value": "jonscap.com"
+        }
+      ],
+      "dest": "/jonscap.html"
+    },
+    {
+      "src": "^/robots\\.txt$",
+      "has": [
+        {
+          "type": "host",
+          "value": "jonscap.com"
+        }
+      ],
+      "dest": "/jonscap-robots.txt"
+    },
+    {
+      "src": "^/sitemap\\.xml$",
+      "has": [
+        {
+          "type": "host",
+          "value": "jonscap.com"
+        }
+      ],
+      "dest": "/jonscap-sitemap.xml",
+      "headers": {
+        "Content-Type": "application/xml"
+      }
+    },
+    {
+      "src": "^/llms\\.txt$",
+      "has": [
+        {
+          "type": "host",
+          "value": "jonscap.com"
+        }
+      ],
+      "dest": "/jonscap-llms.txt",
+      "headers": {
+        "Content-Type": "text/plain; charset=utf-8"
+      }
+    },
+    {
       "src": "^/$",
       "has": [
         {
