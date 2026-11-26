@@ -95,6 +95,7 @@ CSS = '''
 .wins-sec .sub{text-align:center;color:var(--text-muted);font-size:15px;max-width:620px;margin:0 auto 38px}
 .wins-grid{columns:2 420px;column-gap:24px;max-width:1080px;margin:0 auto}
 .win{break-inside:avoid;margin:0 0 24px;background:var(--section-bg);border:1px solid var(--border);border-radius:6px;overflow:hidden}
+.win-wide{max-width:1080px;margin:0 auto 24px}
 .win img{display:block;width:100%;height:auto;background:#1a1d21}
 .win figcaption{padding:14px 18px 16px}
 .win figcaption b{display:block;font-family:'Playfair Display',serif;font-size:19px;color:var(--text-primary);margin-bottom:3px}
@@ -112,11 +113,12 @@ CSS = '''
 '''
 
 def wins_html():
-    figs = "\n".join(f'''  <figure class="win"><img src="images/wins/{f}" alt="{html.escape(t)}: {html.escape(c)}" loading="lazy"></figure>''' for f, t, c in WINS)
+    figs = "\n".join(f'''  <figure class="win"><img src="images/wins/{f}" alt="{html.escape(t)}: {html.escape(c)}" loading="lazy"></figure>''' for f, t, c in WINS[1:])
     return f'''<section class="wins-sec" id="wins">
   <div class="label" style="text-align:center;">Member Wins</div>
   <h2>Wins from The CEO Cohort</h2>
   <p class="sub">A selection of recent results shared by members. Names and deal details are redacted to protect member confidentiality.</p>
+  <figure class="win win-wide"><img src="images/wins/{WINS[0][0]}" alt="{html.escape(WINS[0][1])}: {html.escape(WINS[0][2])}" loading="lazy"></figure>
   <div class="wins-grid">
 {figs}
   </div>
