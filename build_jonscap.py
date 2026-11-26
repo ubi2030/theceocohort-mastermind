@@ -39,6 +39,7 @@ FAQ = [
 WINS = [
  ("15m.jpg", "$15M+ unlocked", "Fundraising email copy written together led to a key seed investor and over $15M raised."),
  ("endorsement.jpg", "Endorsement", "Written endorsement approved by email."),
+ ("safe.jpg", "SAFE signed", "SAFE executed and delivered."),
  ("wire.jpg", "Wire received", "A first wire landing in a member's commercial checking account."),
  ("300k.jpg", "$300K deal inked", "A $300K deal signed via legal, with $50K and $70K more verbally committed."),
  ("100k.jpg", "$100K contract signed", "Contract countersigned by all parties."),
