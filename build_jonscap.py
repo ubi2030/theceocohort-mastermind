@@ -142,6 +142,15 @@ def faq_html():
 s = open("raising.html").read()
 s = s.replace("</style>", CSS + "</style>", 1)
 i = s.index('<section class="apply-sec"'); s = s[:i] + wins_html() + "\n" + s[i:]  # 11/25: Wins on jonscap.com ONLY
+# 11/27: Philipp Zentner (LI.FI) card on jonscap.com ONLY, first in the "Trusted by 1000+ Founders" grid
+PHILIPP = '''
+    <div class="tcard">
+      <div class="thead"><img src="images/philipp.jpg" alt="Philipp Zentner"><div class="tname">Philipp Zentner<span>CEO, LI.FI</span></div></div>
+      <div class="tstat">$52M+ <span>raised</span></div>
+      <blockquote>&ldquo;I f*cking love it [coaching with Jonathan].&rdquo;</blockquote>
+    </div>'''
+anchor = '<div class="label" style="text-align:center;">Trusted by 1000+ Founders</div>\n  <div class="tcards">'
+assert s.count(anchor) == 1; s = s.replace(anchor, anchor + PHILIPP, 1)
 s = re.sub(r"<title>.*?</title>\s*<meta name=\"description\"[^>]*>", lambda m: HEAD, s, count=1, flags=re.S)
 i = s.index("<footer>"); s = s[:i] + faq_html() + "\n" + s[i:]
 s = s.replace('<a href="https://www.theceocohort.com/privacy"', '<a href="#faq">FAQ</a>\n<a href="https://www.theceocohort.com/privacy"', 1)
